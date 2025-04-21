@@ -35,7 +35,6 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt',
     'django_filters',
     'blog',
-    'blog.apps.BlogConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

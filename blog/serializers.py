@@ -1,7 +1,6 @@
 from rest_framework import serializers  
-from .models import Category, Post
+from .models import Category, Post, Profile
 from django.contrib.auth.models import User
-
 class UserSerializer(serializers.ModelSerializer):  
     """Сериализатор для модели User"""  
   
@@ -9,6 +8,13 @@ class UserSerializer(serializers.ModelSerializer):
         model = User  
         fields = ('id', 'username')
 
+class ProfileSerializer(serializers.ModelSerializer):  
+    """Сериализатор для профиля пользователя"""  
+    user = UserSerializer(read_only=True)  
+  
+    class Meta:  
+        model = Profile  
+        fields = ('id', 'user', 'bio')  
 class PostSerializer(serializers.ModelSerializer):
     """Сериализатор для поста"""  
     author = UserSerializer(read_only=True)
